@@ -7,7 +7,6 @@
     "build": "ng-packagr -p package.json",
     "test": "ngc -p tsconfig.spec.json && jasmine dist/spec/*.spec.js",
     "publish": "npm publish dist",
-    "precommit": "lint-staged",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
     "prettier": "prettier --parser typescript --single-quote es5 --write \"**/*.ts\""
   },
@@ -30,36 +29,36 @@
   },
   "homepage": "https://github.com/amcdnl/ngrx-router#readme",
   "peerDependencies": {
-    "@angular/core": "^6.0.0",
-    "@angular/common": "^6.0.0",
-    "@angular/router": "^6.0.0",
-    "@ngrx/effects": "^6.0.0",
-    "@ngrx/store": "^6.0.0",
+    "@angular/core": ">=6.0.0 <8.0.0",
+    "@angular/common": ">=6.0.0 <8.0.0",
+    "@angular/router": ">=6.0.0 <8.0.0",
+    "@ngrx/effects": ">=6.0.0 <8.0.0",
+    "@ngrx/store": ">=6.0.0 <8.0.0",
     "rxjs": "^6.0.0"
   },
   "devDependencies": {
-    "@angular-devkit/schematics": "^0.6.5",
-    "@angular/common": "^6.0.3",
-    "@angular/compiler": "^6.0.3",
-    "@angular/compiler-cli": "^6.0.3",
-    "@angular/core": "^6.0.3",
-    "@angular/forms": "^6.0.3",
-    "@angular/platform-browser": "^6.0.3",
-    "@angular/router": "^6.0.3",
-    "@ngrx/effects": "^6.0.1",
-    "@ngrx/store": "^6.0.1",
-    "@types/jasmine": "^2.8.0",
-    "husky": "^0.14.3",
-    "jasmine": "^2.8.0",
+    "@angular-devkit/schematics": "^7.1.4",
+    "@angular/common": "^7.1.4",
+    "@angular/compiler": "^7.1.4",
+    "@angular/compiler-cli": "^7.1.4",
+    "@angular/core": "^7.1.4",
+    "@angular/forms": "^7.1.4",
+    "@angular/platform-browser": "^7.1.4",
+    "@angular/router": "^7.1.4",
+    "@ngrx/effects": "^7.0.0",
+    "@ngrx/store": "^7.0.0",
+    "@types/jasmine": "^3.3.5",
+    "husky": "^1.2.1",
+    "jasmine": "^3.3.1",
     "lint-staged": "^7.1.2",
-    "ng-packagr": "2.4.5",
-    "prettier": "^1.12.1",
+    "ng-packagr": "4.4.5",
+    "prettier": "^1.15.3",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^6.2.0",
     "tsickle": "^0.29.0",
     "tslib": "^1.9.1",
-    "tslint": "^5.8.0",
-    "typescript": "~2.7.2",
+    "tslint": "^5.12.0",
+    "typescript": "~3.1.6",
     "zone.js": "^0.8.4"
   },
   "ngPackage": {
@@ -77,5 +76,10 @@
     "singleQuote": true,
     "printWidth": 120,
     "tabWidth": 2
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }

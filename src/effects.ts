@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { Effect, Actions, ofType } from '@ngrx/effects';
 import { ROUTER_GO_TYPE, ROUTER_BACK_TYPE, ROUTER_FORWARD_TYPE, RouteNavigation } from './actions';
 import { map, tap, filter, debounce } from 'rxjs/operators';
-import { Store, Action } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -17,7 +17,10 @@ export class RouterEffects {
   );
 
   @Effect({ dispatch: false })
-  navigateBack$ = this.actions$.pipe(ofType(ROUTER_BACK_TYPE), tap(() => setTimeout(() => this.location.back())));
+  navigateBack$ = this.actions$.pipe(
+    ofType(ROUTER_BACK_TYPE),
+    tap(() => setTimeout(() => this.location.back()))
+  );
 
   @Effect({ dispatch: false })
   navigateForward$ = this.actions$.pipe(
@@ -38,7 +41,10 @@ export class RouterEffects {
 
   private listenToRouter() {
     this.router.events
-      .pipe(filter(event => event instanceof ActivationStart), debounce(() => this.navEnd$))
+      .pipe(
+        filter(event => event instanceof ActivationStart),
+        debounce(() => this.navEnd$)
+      )
       .subscribe((event: any) => {
         let route = event.snapshot;
         const path: any[] = [];
