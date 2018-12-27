@@ -34,7 +34,7 @@ export class MyModule {}
 In an effect, you can do bind to route activations like:
 
 ```javascript
-import { ofRoute, mapToParam, RouteNavigation } from 'ngrx-router';
+import { ofRoute, mapToParam } from 'ngrx-router';
 
 @Injectable()
 export class MyEffect {
@@ -54,6 +54,7 @@ The operator `ofRoute` supports the following syntax:
 * a simple match against a string `ofRoute('pizza/:id')`
 * a match against an array of strings `ofRoute(['pizza/:id', 'burger/:id', 'burgers'])`
 * a match against a regular expression `ofRoute(/pizza|burger/)`
+* filter for all routing actions `ofRoute()`
 
 ### Actions
 You can also do navigation events with this library.

@@ -3,10 +3,10 @@ import { Action } from '@ngrx/store';
 import { filter, map } from 'rxjs/operators';
 import { RouteNavigation, ROUTER_NAVIGATION_TYPE } from './actions';
 
-export function isRoute(route: string | string[] | RegExp) {
+export function isRoute(route?: string | string[] | RegExp) {
   return (action: Action) => {
     const isRouteAction = action.type === ROUTER_NAVIGATION_TYPE;
-    if (isRouteAction) {
+    if (isRouteAction && route) {
       const routeAction = action as RouteNavigation;
       const routePath = routeAction.payload.path;
       if (Array.isArray(route)) {
@@ -21,7 +21,7 @@ export function isRoute(route: string | string[] | RegExp) {
   };
 }
 
-export function ofRoute(route: string | string[] | RegExp): MonoTypeOperatorFunction<RouteNavigation> {
+export function ofRoute(route?: string | string[] | RegExp): MonoTypeOperatorFunction<RouteNavigation> {
   return filter<RouteNavigation>(isRoute(route));
 }
 
